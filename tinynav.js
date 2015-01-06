@@ -1,4 +1,4 @@
-/*! http://tinynav.viljamis.com v1.2 by @viljamis */
+/*! http://tinynav.viljamis.com v1.2.1c by @viljamis (chapter fork) */
 (function ($, window, i) {
   $.fn.tinyNav = function (options) {
 
@@ -62,7 +62,12 @@
         });
 
         // Inject select
-        $(l_namespace_i).after($select);
+        $targetElement = $($(l_namespace_i).data('replacementElement'));
+        if ($targetElement.length > 0) {
+          $targetElement.append($select);
+        } else {
+          $(l_namespace_i).after($select);
+        }
 
         // Inject label
         if (settings.label) {
